@@ -1,6 +1,7 @@
 
 # Who am I
 
+<<<<<<< HEAD
 * Where are you from?
 * What do you do?
 * Do you have previous experience with technology/data?
@@ -32,3 +33,7 @@ I wish I was special
 * Which industry will you seek employment in?
 * What will your future role look like?
 * What is your career goal?
+=======
+borrada la mitad y anadido esto
+
+>>>>>>> 768a128f24f35399a0485d6c4d96560fde2a589e
