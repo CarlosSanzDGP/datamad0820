@@ -7,8 +7,12 @@ my_listComprehension = [1/egg for egg in eggs]
 print(my_listComprehension)
 
 #Insert here the module/library import statements 
+
 import math 
 
+import os, sys
+
+import random
 
 
 #1. Calculate the square number of the first 20 numbers. Use square as the name of the list.
@@ -37,17 +41,18 @@ sqrt = [math.sqrt(n) for n in range(1,100)]
 
 my_list = [n for n in range(-10, 1)]
 
-
+print(my_list)
 
 #5. Find the odd numbers from 1-100. Use odds as the name of the list. 
 # Remember to use list comprehensions and to print your results
 
-
+odds = [n for n in range(1,101) if n%2!=0]
 
 
 #6. Find all of the numbers from 1-1000 that are divisible by 7. Use divisible_by_seven as the name of the list.
 # Remember to use list comprehensions and to print your results
 
+divisible_by_seven = [n for n in range(1,1001) if n%7==0]
 
 
 
@@ -56,37 +61,54 @@ my_list = [n for n in range(-10, 1)]
 # You can use the following test string but feel free to modify at your convenience
 
 teststring = 'Find all of the words in a string that are monosyllabic'
+non_vowels = [l for l in teststring if l not in "aeiou"]
 
-
-
+print("".join(non_vowels))
 
 #8. Find the capital letters (and not white space) in the sentence 'The Quick Brown Fox Jumped Over The Lazy Dog'. 
 # Use capital_letters as the name of the list.  
 # Remember to use list comprehensions and to print your results
 
-
-
+capital_letters = [l for l in 'The Quick Brown Fox Jumped Over The Lazy Dog' if l.isupper()==True]
+print(capital_letters)
 
 #9. Find all the consonants in the sentence 'The quick brown fox jumped over the lazy dog'.
 # Use consonants as the name of the list.
 # Remember to use list comprehensions and to print your results.
 
-
-
+consonants = [c for c in 'The Quick Brown Fox Jumped Over The Lazy Dog' if c not in "aeiou AEIOU"]
+print(consonants)
 
 
 #10. Find the folders you have in your madrid-oct-2018 local repo. Use files as name of the list.  
 # You will probably need to import os library and some of its modules. You will need to make some online research.
 # Remember to use list comprehensions and to print your results.
 
+#dejo las dos maneras para acordarme de donde lo he sacado
+#solo saco los de module 1 pq si no se hace demasiado larga
+path = "../.."
+dirs = os.listdir( path )
+for file in dirs:
+   print (file)
 
+files = [file for file in os.listdir("../..")]
+files
 
 #11. Create 4 lists of 10 random numbers between 0 and 100 each. Use random_lists as the name of the list. 
 #You will probably need to import random module
 # Remember to use list comprehensions and to print your results
 
+#lo he hecho de dos maneras pq son muy diferentes y la segunda es mejor pero la primera tbn me gusta
+list1= (random.choices(range(0,100), k=10))
+list2= (random.choices(range(0,100), k=10))
+list3= (random.choices(range(0,100), k=10))
+list4= (random.choices(range(0,100), k=10))
+random_lists = [list1, list2,list3, list4]
+[print(e) for e in random_lists]
 
 
+random_lists = [random.sample(range(101), 10) for e in range(4)]
+print(random_lists)
 
 #12. Flatten the following list of lists. Use flatten_list as the name of the output.
 # Remember to use list comprehensions and to print your results
