@@ -107,14 +107,17 @@ random_lists = [list1, list2,list3, list4]
 [print(e) for e in random_lists]
 
 
-random_lists = [random.sample(range(101), 10) for e in range(4)]
-print(random_lists)
+random_lists = [random.sample(range(1,101),k=10) for e in range(4)]
+print (random_lists)
+
 
 #12. Flatten the following list of lists. Use flatten_list as the name of the output.
 # Remember to use list comprehensions and to print your results
 
 list_of_lists = [[1,2,3],[4,5,6],[7,8,9]]
 
+flat_list = [item for sublist in list_of_lists for item in sublist]
+print(flat_list)
 
 
 #13. Convert the numbers of the following nested list to floats. Use floats as the name of the list. 
@@ -124,47 +127,76 @@ list_of_lists = [['40', '20', '10', '30'], ['20', '20', '20', '20', '20', '30', 
 ['30', '20', '30', '50', '10', '30', '20', '20', '20'], ['100', '100'], ['100', '100', '100', '100', '100'], \
 ['100', '100', '100', '100']]
 
+# las lista de floats en una sola lista
+floats = [float(n) for sublist in list_of_lists for n in sublist]
+print(floats)
 
+# LLevo un buen rato intentando hacer una lista de listas con los numeros convertidos, es decir, trabajar con los numero pero 
+# no aplanar la lista. Se puede hacer una a una pero no veo como hacerlo rapido. Alguna idea?
 
 
 #14. Handle the exception thrown by the code below by using try and except blocks. 
 
 
 for i in ['a','b','c']:
-    print i**2
+    try:
+        print (i**2)
+    except:
+        print(f'{i} is not a number')
 
 
 #15. Handle the exception thrown by the code below by using try and except blocks. 
 #Then use a finally block to print 'All Done.'
-# Check in provided resources the type of error you may use. 
+# Check in provided resources the type of error you may use.
 
 x = 5
 y = 0
 
-z = x/y
-
-
+try:
+    z = x/y
+except ZeroDivisionError:
+    print('We can not divide by 0, it does not have any sense')
+print ('All done')
 
 
 #16. Handle the exception thrown by the code below by using try and except blocks. 
 # Check in provided resources the type of error you may use. 
 
-abc=[10,20,20]
-print(abc[3])
 
+abc=[10,20,20]
+try:
+    print(abc[3])
+except IndexError:
+    print ("pero no ves que solo tiene tres elementos y le pides el cuarto?")
+    
 
 #17. Handle at least two kind of different exceptions when dividing a couple of numbers provided by the user. 
 # Hint: take a look on python input function. 
 # Check in provided resources the type of error you may use. 
 
+a=2
+b='a'
+
+try:
+    x=int(a)/int(b)
+    print(x)
+except ZeroDivisionError:
+    print ('try not to divide by 0')
+except ValueError:
+    print('Come on lad, this is not a number!')
 
 
 
 #18. Handle the exception thrown by the code below by using try and except blocks. 
 # Check in provided resources the type of error you may use. 
+ 
+try:
+    f = open('testfile','r')
+    f.write('Test write this')
+except FileNotFoundError:
+    print ("you sure there that file exists?")
+    
 
-f = open('testfile','r')
-f.write('Test write this')
 
 
 
@@ -172,9 +204,14 @@ f.write('Test write this')
 #19. Handle the exceptions that can be thrown by the code below using try and except blocks. 
 #Hint: the file could not exist and the data could not be convertable to int
 
-fp = open('myfile.txt')
+try:
+    fp = open('myfile.txt')
     line = f.readline()
     i = int(s.strip())
+except FileNotFoundError:
+    print ("Check the name you wrote. This file does not exist")
+except:
+    print ("the file exists but there is something wrong")
 
 
 
@@ -189,6 +226,15 @@ def linux_interaction():
     print('Doing something.')
 
 
+try:
+    linux_interaction()
+except:
+    print('This funcion only works in a Linux')
+    
+# me gustaria saber que hace esta funcion pq la verdad es que no entiendo que pasa. solo he puesto un bloque de try except pero # pero  no se que esta ocurriendo.    
+
+
+
 # Bonus Questions:
 
 # You will need to make some research on dictionary comprehension to solve the following questions
@@ -197,8 +243,20 @@ def linux_interaction():
 # Hint: we need to continually keep checking until we get an integer.
 # Use a while loop with a try,except, else block to account for incorrect inputs.
 
-
-
+def squared_int():
+    num= input ("Dame un numero cualquiera: ")
+    try:
+        x = int(num)
+        if x%5 == 0: 
+             print ("por el culo te la hinco")
+        else:    
+            print (f'el cuadrado de {num} es {x**2}. La verdad es que lo podias haber hecho de cabeza')
+    except:
+        print ("en serio no puedes escribir un numero?")
+        
+### Ojo, falta el while true de este ejercicio. a ver si mas adelante soy capaz de retomarlo. 
+        
+        
 
 # 22. Find all of the numbers from 1-1000 that are divisible by any single digit besides 1 (2-9). 
 # Use results as the name of the list 
